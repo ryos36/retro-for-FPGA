@@ -1,0 +1,19 @@
+ToDo
+    stack の効率化
+
+div/
+    割り算の習作
+    上位のビットの zero の長さを作る関数の
+    find_zero_len(x:int32) がある。本番は utils_for_retro.py  にある。
+    utils_for_retro のなかでは for 文で回しているが
+    将来的には unroll すればいいと思う。
+
+images/
+    RETRO のイメージ。
+
+phase/
+    ニューバージョンの作りかけ？
+    複雑な処理(例えば JUMP)などの処理を細分化して(phase にわけて)
+    処理をしようという試み。
+    一つ一つの処理が細かくなるので fmax(クロックの最大)が
+    大きくなるのではないか？

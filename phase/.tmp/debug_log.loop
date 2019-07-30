@@ -1,0 +1,1834 @@
+--------------------------
+preprocess_global:loop
+--------------------------
+preprocess_global:jump
+--------------------------
+preprocess_global:jump_ge
+--------------------------
+preprocess_global:jump_le
+--------------------------
+preprocess_global:jump_ne
+--------------------------
+preprocess_global:jump_eq
+--------------------------
+preprocess_global:point
+--------------------------
+preprocess_global:write_point
+--------------------------
+preprocess_global:zero_pop_return
+--------------------------
+preprocess_global:lit.LIT
+--------------------------
+preprocess_global:loop.LOOP
+--------------------------
+preprocess_global:jump.JUMP
+--------------------------
+preprocess_global:jump_ge.JUMP_GE
+--------------------------
+preprocess_global:jump_le.JUMP_LE
+--------------------------
+preprocess_global:jump_ne.JUMP_NE
+--------------------------
+preprocess_global:jump_eq.JUMP_EQ
+--------------------------
+preprocess_global:point.POINT
+--------------------------
+preprocess_global:write_point.WRITE_POINT
+--------------------------
+preprocess_global:zero_pop_return.ZERO_POP_RETURN
+--------------------------
+preprocess_global:stack.retro_stack
+--------------------------
+preprocess_global:sim_device.rx_char
+--------------------------
+preprocess_global:utils_for_retro.abs
+--------------------------
+preprocess_global:sim_device.tx_char
+--------------------------
+preprocess_global:utils_for_retro.retro_divmod
+--------------------------
+preprocess_global:sim_device.flush
+--------------------------
+preprocess_global:sim_device.handle_devices
+--------------------------
+preprocess_global:@top.retro_main
+--------------------------
+preprocess_global:@top.test
+--------------------------
+preprocess_global:lit.LIT.__init__
+--------------------------
+preprocess_global:loop.LOOP.__init__
+--------------------------
+preprocess_global:jump.JUMP.__init__
+--------------------------
+preprocess_global:jump_ge.JUMP_GE.__init__
+--------------------------
+preprocess_global:jump_le.JUMP_LE.__init__
+--------------------------
+preprocess_global:jump_ne.JUMP_NE.__init__
+--------------------------
+preprocess_global:jump_eq.JUMP_EQ.__init__
+--------------------------
+preprocess_global:point.POINT.__init__
+--------------------------
+preprocess_global:write_point.WRITE_POINT.__init__
+--------------------------
+preprocess_global:zero_pop_return.ZERO_POP_RETURN.__init__
+--------------------------
+preprocess_global:stack.retro_stack.__init__
+--------------------------
+preprocess_global:jump.JUMP.exec
+--------------------------
+preprocess_global:lit.LIT.exec
+--------------------------
+preprocess_global:loop.LOOP.exec
+--------------------------
+preprocess_global:jump_ge.JUMP_GE.exec
+--------------------------
+preprocess_global:jump_le.JUMP_LE.exec
+--------------------------
+preprocess_global:jump_ne.JUMP_NE.exec
+--------------------------
+preprocess_global:jump_eq.JUMP_EQ.exec
+--------------------------
+preprocess_global:point.POINT.exec
+--------------------------
+preprocess_global:zero_pop_return.ZERO_POP_RETURN.exec
+--------------------------
+preprocess_global:write_point.WRITE_POINT.exec
+--------------------------
+preprocess_global:stack.retro_stack.pop
+--------------------------
+preprocess_global:stack.retro_stack.push
+--------------------------
+preprocess_global:stack.retro_stack.swap
+--------------------------
+preprocess_global:stack.retro_stack.length
+--------------------------
+preprocess_global:stack.retro_stack.sync_top
+--------------------------
+preprocess_global:stack.retro_stack.sync_second
+--------------------------
+preprocess_global:stack.retro_stack.sync
+--------------------------
+preprocess_global:stack.retro_stack.check
+------------------------------
+stack.retro_stack.check
+------------------------------
+53:        assert( self.top == self.mem[self.pos - 1] )
+        !assert:function<_assert>((self:retro_stack.top:undef == self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x1)]))
+54:        assert( self.second == self.mem[self.pos - 2] )
+        !assert:function<_assert>((self:retro_stack.second:undef == self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x2)]))
+------------------------------
+stack.retro_stack.sync
+------------------------------
+47:    def sync(self):
+    jump stack.retro_stack.sync_exit7 ''
+    return @function_return:undef
+48:        if self.debug:
+        cjump (self:retro_stack.debug:undef != 0x0) ? stack.retro_stack.sync_ifthen2, stack.retro_stack.sync_ifelse5
+        jump stack.retro_stack.sync_b6 ''
+        jump stack.retro_stack.sync_b6 ''
+49:            self.mem[self.pos - 1] = self.top
+            self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x1)] = self:retro_stack.top:undef
+50:            self.mem[self.pos - 2] = self.second
+            self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x2)] = self:retro_stack.second:undef
+------------------------------
+stack.retro_stack.sync_second
+------------------------------
+43:    def sync_second(self):
+    jump stack.retro_stack.sync_second_exit7 ''
+    return @function_return:undef
+44:        if self.debug:
+        cjump (self:retro_stack.debug:undef != 0x0) ? stack.retro_stack.sync_second_ifthen2, stack.retro_stack.sync_second_ifelse5
+        jump stack.retro_stack.sync_second_b6 ''
+        jump stack.retro_stack.sync_second_b6 ''
+45:            self.mem[self.pos - 2] = self.second
+            self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x2)] = self:retro_stack.second:undef
+------------------------------
+stack.retro_stack.sync_top
+------------------------------
+39:    def sync_top(self):
+    jump stack.retro_stack.sync_top_exit7 ''
+    return @function_return:undef
+40:        if self.debug:
+        cjump (self:retro_stack.debug:undef != 0x0) ? stack.retro_stack.sync_top_ifthen2, stack.retro_stack.sync_top_ifelse5
+        jump stack.retro_stack.sync_top_b6 ''
+        jump stack.retro_stack.sync_top_b6 ''
+41:            self.mem[self.pos - 1] = self.top
+            self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x1)] = self:retro_stack.top:undef
+------------------------------
+stack.retro_stack.length
+------------------------------
+37:        return len(self.mem)
+        @function_return:undef = !len:function<len>(self:retro_stack.mem:undef)
+        jump stack.retro_stack.length_exit2 'E'
+        return @function_return:undef
+------------------------------
+stack.retro_stack.swap
+------------------------------
+29:    def swap(self):
+    jump stack.retro_stack.swap_exit7 ''
+    return @function_return:undef
+30:        if self.debug:
+        cjump (self:retro_stack.debug:undef != 0x0) ? stack.retro_stack.swap_ifthen2, stack.retro_stack.swap_ifelse5
+        jump stack.retro_stack.swap_b6 ''
+        jump stack.retro_stack.swap_b6 ''
+31:            a = self.mem[self.pos - 2]
+            a:undef = self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x2)]
+32:            self.mem[self.pos - 2] = self.mem[self.pos - 1]
+            self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x2)] = self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x1)]
+33:            self.mem[self.pos - 1] = a
+            self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x1)] = a:undef
+34:        (self.top, self.second) = (self.second, self.top)
+        (self:retro_stack.top:undef, self:retro_stack.second:undef) = (self:retro_stack.second:undef, self:retro_stack.top:undef)
+------------------------------
+stack.retro_stack.push
+------------------------------
+20:    def push(self, v):
+    v:int32 = @in_v:int32
+    jump stack.retro_stack.push_exit7 ''
+    return @function_return:undef
+21:        if self.debug:
+        cjump (self:retro_stack.debug:undef != 0x0) ? stack.retro_stack.push_ifthen2, stack.retro_stack.push_ifelse5
+        jump stack.retro_stack.push_b6 ''
+        jump stack.retro_stack.push_b6 ''
+22:            assert(self.pos < len(self.mem))
+            !assert:function<_assert>((self:retro_stack.pos:undef < !len:function<len>(self:retro_stack.mem:undef)))
+23:            self.mem[self.pos] = v
+            self:retro_stack.mem:undef[self:retro_stack.pos:undef] = v:int32
+24:        self.mem[self.pos - 2] = self.second
+        self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x2)] = self:retro_stack.second:undef
+25:        self.second = self.top
+        self:retro_stack.second:undef = self:retro_stack.top:undef
+26:        self.top = v
+        self:retro_stack.top:undef = v:int32
+27:        self.pos += 1
+        self:retro_stack.pos:undef = (self:retro_stack.pos:undef + 0x1)
+------------------------------
+stack.retro_stack.pop
+------------------------------
+12:        if self.debug:
+        cjump (self:retro_stack.debug:undef != 0x0) ? stack.retro_stack.pop_ifthen2, stack.retro_stack.pop_ifelse5
+        jump stack.retro_stack.pop_b6 ''
+        jump stack.retro_stack.pop_b6 ''
+13:            assert(self.pos >= 1)
+            !assert:function<_assert>((self:retro_stack.pos:undef >= 0x1))
+14:        rv = self.top
+        rv:undef = self:retro_stack.top:undef
+15:        self.top = self.second
+        self:retro_stack.top:undef = self:retro_stack.second:undef
+16:        self.pos -= 1
+        self:retro_stack.pos:undef = (self:retro_stack.pos:undef - 0x1)
+17:        self.second = self.mem[self.pos - 2]
+        self:retro_stack.second:undef = self:retro_stack.mem:undef[(self:retro_stack.pos:undef - 0x2)]
+18:        return rv
+        @function_return:undef = rv:undef
+        jump stack.retro_stack.pop_exit7 'E'
+        return @function_return:undef
+------------------------------
+write_point.WRITE_POINT.exec
+------------------------------
+9:    def exec(self, ip):
+    ip:int32 = @in_ip:int32
+10:        if (self.phase == 0):
+        cjump (self:WRITE_POINT.phase:undef == 0x0) ? write_point.WRITE_POINT.exec_ifthen2, write_point.WRITE_POINT.exec_ifelse5
+11:            self.ip = ip
+            self:WRITE_POINT.ip:undef = ip:int32
+12:            self.addr = self.stack.pop()
+            self:WRITE_POINT.addr:undef = self:WRITE_POINT.stack:undef.pop()
+13:            self.phase = 1
+            self:WRITE_POINT.phase:undef = 0x1
+14:            return False
+            @function_return:undef = False
+            jump write_point.WRITE_POINT.exec_exit7 'E'
+16:            assert(self.phase == 1)
+            !assert:function<_assert>((self:WRITE_POINT.phase:undef == 0x1))
+17:            self.data = self.stack.pop()
+            self:WRITE_POINT.data:undef = self:WRITE_POINT.stack:undef.pop()
+18:            self.phase = 0
+            self:WRITE_POINT.phase:undef = 0x0
+19:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump write_point.WRITE_POINT.exec_exit7 'E'
+------------------------------
+zero_pop_return.ZERO_POP_RETURN.exec
+------------------------------
+8:    def exec(self, ip):
+    ip:int32 = @in_ip:int32
+9:        if (self.phase == 0):
+        cjump (self:ZERO_POP_RETURN.phase:undef == 0x0) ? zero_pop_return.ZERO_POP_RETURN.exec_ifthen2, zero_pop_return.ZERO_POP_RETURN.exec_ifelse10
+10:            if self.stack.top == 0:
+            cjump (self:ZERO_POP_RETURN.stack:undef.top == 0x0) ? zero_pop_return.ZERO_POP_RETURN.exec_ifthen5, zero_pop_return.ZERO_POP_RETURN.exec_ifelse8
+11:                self.phase = 1
+                self:ZERO_POP_RETURN.phase:undef = 0x1
+12:                self.stack.pop()
+                self:ZERO_POP_RETURN.stack:undef.pop()
+13:                self.ip = self.address.pop()
+                self:ZERO_POP_RETURN.ip:undef = self:ZERO_POP_RETURN.address:undef.pop()
+14:                return False
+                @function_return:undef = False
+                jump zero_pop_return.ZERO_POP_RETURN.exec_exit12 'E'
+16:                self.ip = ip
+                self:ZERO_POP_RETURN.ip:undef = ip:int32
+17:                return True
+                @function_return:undef = True
+                jump zero_pop_return.ZERO_POP_RETURN.exec_exit12 'E'
+19:            assert(self.phase == 1)
+            !assert:function<_assert>((self:ZERO_POP_RETURN.phase:undef == 0x1))
+20:            self.phase = 0
+            self:ZERO_POP_RETURN.phase:undef = 0x0
+21:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump zero_pop_return.ZERO_POP_RETURN.exec_exit12 'E'
+------------------------------
+point.POINT.exec
+------------------------------
+8:    def exec(self, ip, data):
+    ip:int32 = @in_ip:int32
+    data:int32 = @in_data:int32
+9:        if (self.phase == 0):
+        cjump (self:POINT.phase:undef == 0x0) ? point.POINT.exec_ifthen2, point.POINT.exec_ifelse5
+10:            self.ip_saved = ip
+            self:POINT.ip_saved:undef = ip:int32
+11:            self.ip = self.stack.top
+            self:POINT.ip:undef = self:POINT.stack:undef.top
+12:            self.phase = 1
+            self:POINT.phase:undef = 0x1
+13:            return False
+            @function_return:undef = False
+            jump point.POINT.exec_exit17 'E'
+14:        elif (self.phase == 1):
+        cjump (self:POINT.phase:undef == 0x1) ? point.POINT.exec_ifthen6, point.POINT.exec_ifelse9
+15:            self.phase = 2
+            self:POINT.phase:undef = 0x2
+16:            return False
+            @function_return:undef = False
+            jump point.POINT.exec_exit17 'E'
+17:        elif (self.phase == 2):
+        cjump (self:POINT.phase:undef == 0x2) ? point.POINT.exec_ifthen10, point.POINT.exec_ifelse13
+18:            self.ip = self.ip_saved
+            self:POINT.ip:undef = self:POINT.ip_saved:undef
+19:            self.stack.top = data
+            self:POINT.stack:undef.top = data:int32
+20:            self.stack.sync_top()
+            self:POINT.stack:undef.sync_top()
+21:            self.phase = 3
+            self:POINT.phase:undef = 0x3
+22:            return False
+            @function_return:undef = False
+            jump point.POINT.exec_exit17 'E'
+24:            assert(self.phase == 3)
+            !assert:function<_assert>((self:POINT.phase:undef == 0x3))
+25:            self.phase = 0
+            self:POINT.phase:undef = 0x0
+26:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump point.POINT.exec_exit17 'E'
+------------------------------
+jump_eq.JUMP_EQ.exec
+------------------------------
+8:    def exec(self, ip, data):
+    ip:int32 = @in_ip:int32
+    data:int32 = @in_data:int32
+9:        if (self.phase == 0):
+        cjump (self:JUMP_EQ.phase:undef == 0x0) ? jump_eq.JUMP_EQ.exec_ifthen2, jump_eq.JUMP_EQ.exec_ifelse5
+10:            self.ip = ip + 1
+            self:JUMP_EQ.ip:undef = (ip:int32 + 0x1)
+11:            self.a = self.stack.pop()
+            self:JUMP_EQ.a:undef = self:JUMP_EQ.stack:undef.pop()
+12:            self.phase = 1
+            self:JUMP_EQ.phase:undef = 0x1
+13:            return False
+            @function_return:undef = False
+            jump jump_eq.JUMP_EQ.exec_exit22 'E'
+14:        elif (self.phase == 1):
+        cjump (self:JUMP_EQ.phase:undef == 0x1) ? jump_eq.JUMP_EQ.exec_ifthen6, jump_eq.JUMP_EQ.exec_ifelse14
+15:            b = self.stack.pop()
+            b:undef = self:JUMP_EQ.stack:undef.pop()
+16:            if b == self.a:
+            cjump (b:undef == self:JUMP_EQ.a:undef) ? jump_eq.JUMP_EQ.exec_ifthen9, jump_eq.JUMP_EQ.exec_ifelse12
+17:                self.phase = 2
+                self:JUMP_EQ.phase:undef = 0x2
+18:                return False
+                @function_return:undef = False
+                jump jump_eq.JUMP_EQ.exec_exit22 'E'
+20:                self.phase = 0
+                self:JUMP_EQ.phase:undef = 0x0
+21:                return True
+                @function_return:undef = True
+                jump jump_eq.JUMP_EQ.exec_exit22 'E'
+22:        elif (self.phase == 2):
+        cjump (self:JUMP_EQ.phase:undef == 0x2) ? jump_eq.JUMP_EQ.exec_ifthen15, jump_eq.JUMP_EQ.exec_ifelse18
+23:            self.ip = data - 1
+            self:JUMP_EQ.ip:undef = (data:int32 - 0x1)
+24:            self.phase = 3
+            self:JUMP_EQ.phase:undef = 0x3
+25:            return False
+            @function_return:undef = False
+            jump jump_eq.JUMP_EQ.exec_exit22 'E'
+27:            assert(self.phase == 3)
+            !assert:function<_assert>((self:JUMP_EQ.phase:undef == 0x3))
+28:            self.phase = 0
+            self:JUMP_EQ.phase:undef = 0x0
+29:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump jump_eq.JUMP_EQ.exec_exit22 'E'
+------------------------------
+jump_ne.JUMP_NE.exec
+------------------------------
+8:    def exec(self, ip, data):
+    ip:int32 = @in_ip:int32
+    data:int32 = @in_data:int32
+9:        if (self.phase == 0):
+        cjump (self:JUMP_NE.phase:undef == 0x0) ? jump_ne.JUMP_NE.exec_ifthen2, jump_ne.JUMP_NE.exec_ifelse5
+10:            self.ip = ip + 1
+            self:JUMP_NE.ip:undef = (ip:int32 + 0x1)
+11:            self.a = self.stack.pop()
+            self:JUMP_NE.a:undef = self:JUMP_NE.stack:undef.pop()
+12:            self.phase = 1
+            self:JUMP_NE.phase:undef = 0x1
+13:            return False
+            @function_return:undef = False
+            jump jump_ne.JUMP_NE.exec_exit22 'E'
+14:        elif (self.phase == 1):
+        cjump (self:JUMP_NE.phase:undef == 0x1) ? jump_ne.JUMP_NE.exec_ifthen6, jump_ne.JUMP_NE.exec_ifelse14
+15:            b = self.stack.pop()
+            b:undef = self:JUMP_NE.stack:undef.pop()
+16:            if b != self.a:
+            cjump (b:undef != self:JUMP_NE.a:undef) ? jump_ne.JUMP_NE.exec_ifthen9, jump_ne.JUMP_NE.exec_ifelse12
+17:                self.phase = 2
+                self:JUMP_NE.phase:undef = 0x2
+18:                return False
+                @function_return:undef = False
+                jump jump_ne.JUMP_NE.exec_exit22 'E'
+20:                self.phase = 0
+                self:JUMP_NE.phase:undef = 0x0
+21:                return True
+                @function_return:undef = True
+                jump jump_ne.JUMP_NE.exec_exit22 'E'
+22:        elif (self.phase == 2):
+        cjump (self:JUMP_NE.phase:undef == 0x2) ? jump_ne.JUMP_NE.exec_ifthen15, jump_ne.JUMP_NE.exec_ifelse18
+23:            self.ip = data - 1
+            self:JUMP_NE.ip:undef = (data:int32 - 0x1)
+24:            self.phase = 3
+            self:JUMP_NE.phase:undef = 0x3
+25:            return False
+            @function_return:undef = False
+            jump jump_ne.JUMP_NE.exec_exit22 'E'
+27:            assert(self.phase == 3)
+            !assert:function<_assert>((self:JUMP_NE.phase:undef == 0x3))
+28:            self.phase = 0
+            self:JUMP_NE.phase:undef = 0x0
+29:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump jump_ne.JUMP_NE.exec_exit22 'E'
+------------------------------
+jump_le.JUMP_LE.exec
+------------------------------
+8:    def exec(self, ip, data):
+    ip:int32 = @in_ip:int32
+    data:int32 = @in_data:int32
+9:        if (self.phase == 0):
+        cjump (self:JUMP_LE.phase:undef == 0x0) ? jump_le.JUMP_LE.exec_ifthen2, jump_le.JUMP_LE.exec_ifelse5
+10:            self.ip = ip + 1
+            self:JUMP_LE.ip:undef = (ip:int32 + 0x1)
+11:            self.a = self.stack.pop()
+            self:JUMP_LE.a:undef = self:JUMP_LE.stack:undef.pop()
+12:            self.phase = 1
+            self:JUMP_LE.phase:undef = 0x1
+13:            return False
+            @function_return:undef = False
+            jump jump_le.JUMP_LE.exec_exit22 'E'
+14:        elif (self.phase == 1):
+        cjump (self:JUMP_LE.phase:undef == 0x1) ? jump_le.JUMP_LE.exec_ifthen6, jump_le.JUMP_LE.exec_ifelse14
+15:            b = self.stack.pop()
+            b:undef = self:JUMP_LE.stack:undef.pop()
+16:            if b < self.a:
+            cjump (b:undef < self:JUMP_LE.a:undef) ? jump_le.JUMP_LE.exec_ifthen9, jump_le.JUMP_LE.exec_ifelse12
+17:                self.phase = 2
+                self:JUMP_LE.phase:undef = 0x2
+18:                return False
+                @function_return:undef = False
+                jump jump_le.JUMP_LE.exec_exit22 'E'
+20:                self.phase = 0
+                self:JUMP_LE.phase:undef = 0x0
+21:                return True
+                @function_return:undef = True
+                jump jump_le.JUMP_LE.exec_exit22 'E'
+22:        elif (self.phase == 2):
+        cjump (self:JUMP_LE.phase:undef == 0x2) ? jump_le.JUMP_LE.exec_ifthen15, jump_le.JUMP_LE.exec_ifelse18
+23:            self.ip = data - 1
+            self:JUMP_LE.ip:undef = (data:int32 - 0x1)
+24:            self.phase = 3
+            self:JUMP_LE.phase:undef = 0x3
+25:            return False
+            @function_return:undef = False
+            jump jump_le.JUMP_LE.exec_exit22 'E'
+27:            assert(self.phase == 3)
+            !assert:function<_assert>((self:JUMP_LE.phase:undef == 0x3))
+28:            self.phase = 0
+            self:JUMP_LE.phase:undef = 0x0
+29:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump jump_le.JUMP_LE.exec_exit22 'E'
+------------------------------
+jump_ge.JUMP_GE.exec
+------------------------------
+8:    def exec(self, ip, data):
+    ip:int32 = @in_ip:int32
+    data:int32 = @in_data:int32
+9:        if (self.phase == 0):
+        cjump (self:JUMP_GE.phase:undef == 0x0) ? jump_ge.JUMP_GE.exec_ifthen2, jump_ge.JUMP_GE.exec_ifelse5
+10:            self.ip = ip + 1
+            self:JUMP_GE.ip:undef = (ip:int32 + 0x1)
+11:            self.a = self.stack.pop()
+            self:JUMP_GE.a:undef = self:JUMP_GE.stack:undef.pop()
+12:            self.phase = 1
+            self:JUMP_GE.phase:undef = 0x1
+13:            return False
+            @function_return:undef = False
+            jump jump_ge.JUMP_GE.exec_exit22 'E'
+14:        elif (self.phase == 1):
+        cjump (self:JUMP_GE.phase:undef == 0x1) ? jump_ge.JUMP_GE.exec_ifthen6, jump_ge.JUMP_GE.exec_ifelse14
+15:            b = self.stack.pop()
+            b:undef = self:JUMP_GE.stack:undef.pop()
+16:            if b > self.a:
+            cjump (b:undef > self:JUMP_GE.a:undef) ? jump_ge.JUMP_GE.exec_ifthen9, jump_ge.JUMP_GE.exec_ifelse12
+17:                self.phase = 2
+                self:JUMP_GE.phase:undef = 0x2
+18:                return False
+                @function_return:undef = False
+                jump jump_ge.JUMP_GE.exec_exit22 'E'
+20:                self.phase = 0
+                self:JUMP_GE.phase:undef = 0x0
+21:                return True
+                @function_return:undef = True
+                jump jump_ge.JUMP_GE.exec_exit22 'E'
+22:        elif (self.phase == 2):
+        cjump (self:JUMP_GE.phase:undef == 0x2) ? jump_ge.JUMP_GE.exec_ifthen15, jump_ge.JUMP_GE.exec_ifelse18
+23:            self.ip = data - 1
+            self:JUMP_GE.ip:undef = (data:int32 - 0x1)
+24:            self.phase = 3
+            self:JUMP_GE.phase:undef = 0x3
+25:            return False
+            @function_return:undef = False
+            jump jump_ge.JUMP_GE.exec_exit22 'E'
+27:            assert(self.phase == 3)
+            !assert:function<_assert>((self:JUMP_GE.phase:undef == 0x3))
+28:            self.phase = 0
+            self:JUMP_GE.phase:undef = 0x0
+29:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump jump_ge.JUMP_GE.exec_exit22 'E'
+------------------------------
+loop.LOOP.exec
+------------------------------
+7:    def exec(self, ip, data):
+    ip:int32 = @in_ip:int32
+    data:int32 = @in_data:int32
+    jump loop.LOOP.exec_exit22 ''
+    return @function_return:undef
+8:        if (self.phase == 0):
+        cjump (self:LOOP.phase:undef == 0x0) ? loop.LOOP.exec_ifthen2, loop.LOOP.exec_ifelse10
+        jump loop.LOOP.exec_b21 ''
+9:            self.stack.top -= 1
+            self:LOOP.stack:undef.top = (self:LOOP.stack:undef.top - 0x1)
+10:            self.stack.sync_top()
+            self:LOOP.stack:undef.sync_top()
+12:            self.ip = ip + 1
+            self:LOOP.ip:undef = (ip:int32 + 0x1)
+13:            if self.stack.top != 0 and self.stack.top > -1:
+            cjump ((self:LOOP.stack:undef.top != 0x0) and (self:LOOP.stack:undef.top > -0x1)) ? loop.LOOP.exec_ifthen5, loop.LOOP.exec_ifelse8
+            jump loop.LOOP.exec_b9 ''
+14:                self.phase = 1
+                self:LOOP.phase:undef = 0x1
+16:                self.stack.pop()
+                self:LOOP.stack:undef.pop()
+17:                self.phase = 0
+                self:LOOP.phase:undef = 0x0
+18:                return True
+                @function_return:undef = True
+                jump loop.LOOP.exec_exit22 'E'
+19:        elif (self.phase == 1):
+        cjump (self:LOOP.phase:undef == 0x1) ? loop.LOOP.exec_ifthen11, loop.LOOP.exec_ifelse14
+20:            self.phase = 2
+            self:LOOP.phase:undef = 0x2
+21:            return False
+            @function_return:undef = False
+            jump loop.LOOP.exec_exit22 'E'
+22:        elif (self.phase == 2):
+        cjump (self:LOOP.phase:undef == 0x2) ? loop.LOOP.exec_ifthen15, loop.LOOP.exec_ifelse18
+23:            self.ip = data - 1
+            self:LOOP.ip:undef = (data:int32 - 0x1)
+24:            self.phase = 3
+            self:LOOP.phase:undef = 0x3
+25:            return False
+            @function_return:undef = False
+            jump loop.LOOP.exec_exit22 'E'
+27:            assert(self.phase == 3)
+            !assert:function<_assert>((self:LOOP.phase:undef == 0x3))
+28:            self.phase = 0
+            self:LOOP.phase:undef = 0x0
+29:            return True
+            @function_return:undef = True
+            jump loop.LOOP.exec_exit22 'E'
+------------------------------
+lit.LIT.exec
+------------------------------
+7:    def exec(self, ip, data):
+    ip:int32 = @in_ip:int32
+    data:int32 = @in_data:int32
+8:        if (self.phase == 0):
+        cjump (self:LIT.phase:undef == 0x0) ? lit.LIT.exec_ifthen2, lit.LIT.exec_ifelse5
+9:            self.ip = ip + 1
+            self:LIT.ip:undef = (ip:int32 + 0x1)
+10:            self.phase = 1
+            self:LIT.phase:undef = 0x1
+11:            return False
+            @function_return:undef = False
+            jump lit.LIT.exec_exit12 'E'
+12:        elif (self.phase == 1):
+        cjump (self:LIT.phase:undef == 0x1) ? lit.LIT.exec_ifthen6, lit.LIT.exec_ifelse9
+13:            self.phase = 2
+            self:LIT.phase:undef = 0x2
+14:            return False
+            @function_return:undef = False
+            jump lit.LIT.exec_exit12 'E'
+16:            assert(self.phase == 2)
+            !assert:function<_assert>((self:LIT.phase:undef == 0x2))
+17:            self.phase = 0
+            self:LIT.phase:undef = 0x0
+18:            self.stack.push(data)
+            self:LIT.stack:undef.push(data:int32)
+19:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump lit.LIT.exec_exit12 'E'
+------------------------------
+jump.JUMP.exec
+------------------------------
+6:    def exec(self, ip, data):
+    ip:int32 = @in_ip:int32
+    data:int32 = @in_data:int32
+7:        if (self.phase == 0):
+        cjump (self:JUMP.phase:undef == 0x0) ? jump.JUMP.exec_ifthen2, jump.JUMP.exec_ifelse5
+8:            self.ip = ip + 1
+            self:JUMP.ip:undef = (ip:int32 + 0x1)
+9:            self.phase = 1
+            self:JUMP.phase:undef = 0x1
+10:            return False
+            @function_return:undef = False
+            jump jump.JUMP.exec_exit17 'E'
+11:        elif (self.phase == 1):
+        cjump (self:JUMP.phase:undef == 0x1) ? jump.JUMP.exec_ifthen6, jump.JUMP.exec_ifelse9
+12:            self.phase = 2
+            self:JUMP.phase:undef = 0x2
+13:            return False
+            @function_return:undef = False
+            jump jump.JUMP.exec_exit17 'E'
+14:        elif (self.phase == 2):
+        cjump (self:JUMP.phase:undef == 0x2) ? jump.JUMP.exec_ifthen10, jump.JUMP.exec_ifelse13
+15:            self.ip = data - 1
+            self:JUMP.ip:undef = (data:int32 - 0x1)
+16:            self.phase = 3
+            self:JUMP.phase:undef = 0x3
+17:            return False
+            @function_return:undef = False
+            jump jump.JUMP.exec_exit17 'E'
+19:            assert(self.phase == 3)
+            !assert:function<_assert>((self:JUMP.phase:undef == 0x3))
+20:            self.phase = 0
+            self:JUMP.phase:undef = 0x0
+21:            return True
+            return @function_return:undef
+            @function_return:undef = True
+            jump jump.JUMP.exec_exit17 'E'
+------------------------------
+stack.retro_stack.__init__
+------------------------------
+4:    def __init__(self, mem):
+    mem:int32 = @in_mem:int32
+5:        self.pos = 0
+        self:retro_stack.pos:undef = 0x0
+6:        self.top = 0
+        self:retro_stack.top:undef = 0x0
+7:        self.second = 0
+        self:retro_stack.second:undef = 0x0
+8:        self.mem = mem
+        self:retro_stack.mem:undef = mem:int32
+9:        self.debug = 0
+        self:retro_stack.debug:undef = 0x0
+------------------------------
+zero_pop_return.ZERO_POP_RETURN.__init__
+------------------------------
+2:    def __init__(self, stack, address):
+    stack:int32 = @in_stack:int32
+    address:int32 = @in_address:int32
+3:        self.phase = 0
+        self:ZERO_POP_RETURN.phase:undef = 0x0
+4:        self.ip = 0
+        self:ZERO_POP_RETURN.ip:undef = 0x0
+5:        self.stack = stack
+        self:ZERO_POP_RETURN.stack:undef = stack:int32
+6:        self.address = address
+        self:ZERO_POP_RETURN.address:undef = address:int32
+------------------------------
+write_point.WRITE_POINT.__init__
+------------------------------
+2:    def __init__(self, stack):
+    stack:int32 = @in_stack:int32
+3:        self.phase = 0
+        self:WRITE_POINT.phase:undef = 0x0
+4:        self.ip = 0
+        self:WRITE_POINT.ip:undef = 0x0
+5:        self.stack = stack
+        self:WRITE_POINT.stack:undef = stack:int32
+6:        self.addr = 0
+        self:WRITE_POINT.addr:undef = 0x0
+7:        self.data = 0
+        self:WRITE_POINT.data:undef = 0x0
+------------------------------
+point.POINT.__init__
+------------------------------
+2:    def __init__(self, stack):
+    stack:int32 = @in_stack:int32
+3:        self.phase = 0
+        self:POINT.phase:undef = 0x0
+4:        self.ip = 0
+        self:POINT.ip:undef = 0x0
+5:        self.ip_saved = 0
+        self:POINT.ip_saved:undef = 0x0
+6:        self.stack = stack
+        self:POINT.stack:undef = stack:int32
+------------------------------
+jump_eq.JUMP_EQ.__init__
+------------------------------
+2:    def __init__(self, stack):
+    stack:int32 = @in_stack:int32
+3:        self.phase = 0
+        self:JUMP_EQ.phase:undef = 0x0
+4:        self.ip = 0
+        self:JUMP_EQ.ip:undef = 0x0
+5:        self.stack = stack
+        self:JUMP_EQ.stack:undef = stack:int32
+6:        self.a = 0
+        self:JUMP_EQ.a:undef = 0x0
+------------------------------
+jump_ne.JUMP_NE.__init__
+------------------------------
+2:    def __init__(self, stack):
+    stack:int32 = @in_stack:int32
+3:        self.phase = 0
+        self:JUMP_NE.phase:undef = 0x0
+4:        self.ip = 0
+        self:JUMP_NE.ip:undef = 0x0
+5:        self.stack = stack
+        self:JUMP_NE.stack:undef = stack:int32
+6:        self.a = 0
+        self:JUMP_NE.a:undef = 0x0
+------------------------------
+jump_le.JUMP_LE.__init__
+------------------------------
+2:    def __init__(self, stack):
+    stack:int32 = @in_stack:int32
+3:        self.phase = 0
+        self:JUMP_LE.phase:undef = 0x0
+4:        self.ip = 0
+        self:JUMP_LE.ip:undef = 0x0
+5:        self.stack = stack
+        self:JUMP_LE.stack:undef = stack:int32
+6:        self.a = 0
+        self:JUMP_LE.a:undef = 0x0
+------------------------------
+jump_ge.JUMP_GE.__init__
+------------------------------
+2:    def __init__(self, stack):
+    stack:int32 = @in_stack:int32
+3:        self.phase = 0
+        self:JUMP_GE.phase:undef = 0x0
+4:        self.ip = 0
+        self:JUMP_GE.ip:undef = 0x0
+5:        self.stack = stack
+        self:JUMP_GE.stack:undef = stack:int32
+6:        self.a = 0
+        self:JUMP_GE.a:undef = 0x0
+------------------------------
+jump.JUMP.__init__
+------------------------------
+3:        self.phase = 0
+        self:JUMP.phase:undef = 0x0
+4:        self.ip = 0
+        self:JUMP.ip:undef = 0x0
+------------------------------
+loop.LOOP.__init__
+------------------------------
+2:    def __init__(self, stack):
+    stack:int32 = @in_stack:int32
+3:        self.phase = 0
+        self:LOOP.phase:undef = 0x0
+4:        self.ip = 0
+        self:LOOP.ip:undef = 0x0
+5:        self.stack = stack
+        self:LOOP.stack:undef = stack:int32
+------------------------------
+lit.LIT.__init__
+------------------------------
+2:    def __init__(self, stack):
+    stack:int32 = @in_stack:int32
+3:        self.phase = 0
+        self:LIT.phase:undef = 0x0
+4:        self.ip = 0
+        self:LIT.ip:undef = 0x0
+5:        self.stack = stack
+        self:LIT.stack:undef = stack:int32
+------------------------------
+@top.test
+------------------------------
+224:    memory = [0] * 16384
+    memory:undef = ([0x0] * 0x4000)
+225:    io_ports = [0]*16
+    io_ports:undef = ([0x0] * 0x10)
+234:    IMAGE = [0x00000008, 0x00000907, 0x0000211f, 0x00002155,
+    IMAGE:undef = [0x8, 0x907, 0x211f, 0x2155, 0x0, 0x1967, 0x90a, 0x52, 0x65, 0x74...]
+2368:    memory = IMAGE
+    memory:undef = IMAGE:undef
+2369:    retro_main(memory, io_ports)
+    retro_main:function<retro_main>(memory:undef, io_ports:undef)
+------------------------------
+@top.retro_main
+------------------------------
+30:def retro_main( memory:list, io_ports:list ):
+memory:list<int32> = @in_memory:list<int32>
+io_ports:list<int32> = @in_io_ports:list<int32>
+jump @top.retro_main_exit192 ''
+return @function_return:undef
+31:  ip = 0
+  ip:undef = 0x0
+32:  ext = EXIT
+  ext:undef = EXIT:undef
+33:  _stack = [0] * 128
+  _stack:undef = ([0x0] * 0x80)
+34:  stack = retro_stack(_stack)
+  stack:undef = retro_stack(None=_stack:undef)
+35:  _address = [0] * 1024
+  _address:undef = ([0x0] * 0x400)
+36:  address = retro_stack(_address)
+  address:undef = retro_stack(None=_address:undef)
+37:  ports = [0] * 12
+  ports:undef = ([0x0] * 0xc)
+38:  files = [0] * 8
+  files:undef = ([0x0] * 0x8)
+41:  lit = LIT(stack)
+  lit:undef = LIT(None=stack:undef)
+42:  loop = LOOP(stack)
+  loop:undef = LOOP(None=stack:undef)
+43:  jump = JUMP()
+  jump:undef = JUMP()
+44:  jump_ge = JUMP_GE(stack)
+  jump_ge:undef = JUMP_GE(None=stack:undef)
+45:  jump_le = JUMP_LE(stack)
+  jump_le:undef = JUMP_LE(None=stack:undef)
+46:  jump_ne = JUMP_NE(stack)
+  jump_ne:undef = JUMP_NE(None=stack:undef)
+47:  jump_eq = JUMP_EQ(stack)
+  jump_eq:undef = JUMP_EQ(None=stack:undef)
+48:  point = POINT(stack)
+  point:undef = POINT(None=stack:undef)
+49:  write_point = WRITE_POINT(stack)
+  write_point:undef = WRITE_POINT(None=stack:undef)
+50:  zero_pop_return = ZERO_POP_RETURN(stack, address)
+  zero_pop_return:undef = ZERO_POP_RETURN(None=stack:undef, None=address:undef)
+53:  done_flag = True
+  done_flag:undef = True
+55:  wr_mem_addr = 0
+  wr_mem_addr:undef = 0x0
+56:  wr_mem_data = 0
+  wr_mem_data:undef = 0x0
+57:  wr_flag = False
+  wr_flag:undef = False
+59:  opcode = 0
+  opcode:undef = 0x0
+60:  while ip < ext:
+  jump @top.retro_main_while2 ''
+  cjump (ip:undef < ext:undef) ? @top.retro_main_whilebody3, @top.retro_main_whileelse190
+  jump @top.retro_main_whilebridge189 ''
+  jump @top.retro_main_while2 'L'
+  jump @top.retro_main_whileexit191 ''
+61:    mem_data = memory[ip]
+    mem_data:undef = memory:list<int32>[ip:undef]
+62:    if done_flag:
+    cjump (done_flag:undef != 0x0) ? @top.retro_main_ifthen4, @top.retro_main_ifelse7
+    jump @top.retro_main_b8 ''
+    jump @top.retro_main_b8 ''
+63:        opcode = mem_data
+        opcode:undef = mem_data:undef
+70:    if opcode <= 31:
+    cjump (opcode:undef <= 0x1f) ? @top.retro_main_ifthen9, @top.retro_main_ifelse177
+    jump @top.retro_main_b178 ''
+    jump @top.retro_main_b178 ''
+71:      if   opcode ==  0:   # nop
+      cjump (opcode:undef == 0x0) ? @top.retro_main_ifthen12, @top.retro_main_ifelse15
+      jump @top.retro_main_b176 ''
+      jump @top.retro_main_b176 ''
+74:      elif opcode ==  1:   # lit
+      cjump (opcode:undef == 0x1) ? @top.retro_main_ifthen16, @top.retro_main_ifelse19
+      jump @top.retro_main_b175 ''
+      jump @top.retro_main_b175 ''
+75:        done_flag = lit.exec(ip, mem_data)
+        done_flag:undef = lit:undef.exec(ip:undef, mem_data:undef)
+76:        ip = lit.ip
+        ip:undef = lit:undef.ip
+78:      elif opcode ==  2:   # dup
+      cjump (opcode:undef == 0x2) ? @top.retro_main_ifthen20, @top.retro_main_ifelse23
+      jump @top.retro_main_b174 ''
+      jump @top.retro_main_b174 ''
+79:        stack.push(stack.top)
+        stack:undef.push(stack:undef.top)
+81:      elif opcode ==  3:   # drop
+      cjump (opcode:undef == 0x3) ? @top.retro_main_ifthen24, @top.retro_main_ifelse27
+      jump @top.retro_main_b173 ''
+      jump @top.retro_main_b173 ''
+82:        stack.pop()
+        stack:undef.pop()
+84:      elif opcode ==  4:   # swap
+      cjump (opcode:undef == 0x4) ? @top.retro_main_ifthen28, @top.retro_main_ifelse31
+      jump @top.retro_main_b172 ''
+      jump @top.retro_main_b172 ''
+85:        stack.swap()
+        stack:undef.swap()
+87:      elif opcode ==  5:   # push
+      cjump (opcode:undef == 0x5) ? @top.retro_main_ifthen32, @top.retro_main_ifelse35
+      jump @top.retro_main_b171 ''
+      jump @top.retro_main_b171 ''
+88:        address.push(stack.pop())
+        address:undef.push(stack:undef.pop())
+90:      elif opcode ==  6:   # pop
+      cjump (opcode:undef == 0x6) ? @top.retro_main_ifthen36, @top.retro_main_ifelse39
+      jump @top.retro_main_b170 ''
+      jump @top.retro_main_b170 ''
+91:        stack.push(address.pop())
+        stack:undef.push(address:undef.pop())
+93:      elif opcode ==  7:   # loop
+      cjump (opcode:undef == 0x7) ? @top.retro_main_ifthen40, @top.retro_main_ifelse43
+      jump @top.retro_main_b169 ''
+      jump @top.retro_main_b169 ''
+94:        done_flag = loop.exec(ip, mem_data)
+        done_flag:undef = loop:undef.exec(ip:undef, mem_data:undef)
+95:        ip = loop.ip
+        ip:undef = loop:undef.ip
+97:      elif opcode ==  8:   # jump
+      cjump (opcode:undef == 0x8) ? @top.retro_main_ifthen44, @top.retro_main_ifelse47
+      jump @top.retro_main_b168 ''
+      jump @top.retro_main_b168 ''
+98:        done_flag = jump.exec(ip, mem_data)
+        done_flag:undef = jump:undef.exec(ip:undef, mem_data:undef)
+99:        ip = jump.ip
+        ip:undef = jump:undef.ip
+101:      elif opcode ==  9:   # return
+      cjump (opcode:undef == 0x9) ? @top.retro_main_ifthen48, @top.retro_main_ifelse51
+      jump @top.retro_main_b167 ''
+      jump @top.retro_main_b167 ''
+102:        ip = address.pop()
+        ip:undef = address:undef.pop()
+104:      elif opcode == 10:   # >= jump
+      cjump (opcode:undef == 0xa) ? @top.retro_main_ifthen52, @top.retro_main_ifelse55
+      jump @top.retro_main_b166 ''
+      jump @top.retro_main_b166 ''
+105:        done_flag = jump_ge.exec(ip, mem_data)
+        done_flag:undef = jump_ge:undef.exec(ip:undef, mem_data:undef)
+106:        ip = jump_ge.ip
+        ip:undef = jump_ge:undef.ip
+108:      elif opcode == 11:   # <= jump
+      cjump (opcode:undef == 0xb) ? @top.retro_main_ifthen56, @top.retro_main_ifelse59
+      jump @top.retro_main_b165 ''
+      jump @top.retro_main_b165 ''
+109:        done_flag = jump_le.exec(ip, mem_data)
+        done_flag:undef = jump_le:undef.exec(ip:undef, mem_data:undef)
+110:        ip = jump_le.ip
+        ip:undef = jump_le:undef.ip
+112:      elif opcode == 12:   # != jump
+      cjump (opcode:undef == 0xc) ? @top.retro_main_ifthen60, @top.retro_main_ifelse63
+      jump @top.retro_main_b164 ''
+      jump @top.retro_main_b164 ''
+113:        done_flag = jump_ne.exec(ip, mem_data)
+        done_flag:undef = jump_ne:undef.exec(ip:undef, mem_data:undef)
+114:        ip = jump_ne.ip
+        ip:undef = jump_ne:undef.ip
+116:      elif opcode == 13:   # == jump
+      cjump (opcode:undef == 0xd) ? @top.retro_main_ifthen64, @top.retro_main_ifelse67
+      jump @top.retro_main_b163 ''
+      jump @top.retro_main_b163 ''
+117:        done_flag = jump_eq.exec(ip, mem_data)
+        done_flag:undef = jump_eq:undef.exec(ip:undef, mem_data:undef)
+118:        ip = jump_eq.ip
+        ip:undef = jump_eq:undef.ip
+120:      elif opcode == 14:   # @
+      cjump (opcode:undef == 0xe) ? @top.retro_main_ifthen68, @top.retro_main_ifelse71
+      jump @top.retro_main_b162 ''
+      jump @top.retro_main_b162 ''
+121:        done_flag = point.exec(ip, mem_data)
+        done_flag:undef = point:undef.exec(ip:undef, mem_data:undef)
+122:        ip = point.ip
+        ip:undef = point:undef.ip
+124:      elif opcode == 15:   # !
+      cjump (opcode:undef == 0xf) ? @top.retro_main_ifthen72, @top.retro_main_ifelse80
+      jump @top.retro_main_b161 ''
+      jump @top.retro_main_b161 ''
+125:        done_flag = write_point.exec(ip)
+        done_flag:undef = write_point:undef.exec(ip:undef)
+126:        ip = write_point.ip
+        ip:undef = write_point:undef.ip
+127:        if done_flag:
+        cjump (done_flag:undef != 0x0) ? @top.retro_main_ifthen75, @top.retro_main_ifelse78
+        jump @top.retro_main_b79 ''
+        jump @top.retro_main_b79 ''
+128:          wr_mem_addr = write_point.addr
+          wr_mem_addr:undef = write_point:undef.addr
+129:          wr_mem_data = write_point.data
+          wr_mem_data:undef = write_point:undef.data
+130:          wr_flag = True
+          wr_flag:undef = True
+132:      elif opcode == 16:   # +
+      cjump (opcode:undef == 0x10) ? @top.retro_main_ifthen81, @top.retro_main_ifelse84
+      jump @top.retro_main_b160 ''
+      jump @top.retro_main_b160 ''
+133:        t = stack.pop()
+        t:undef = stack:undef.pop()
+134:        stack.top += t
+        stack:undef.top = (stack:undef.top + t:undef)
+135:        stack.sync_top()
+        stack:undef.sync_top()
+137:      elif opcode == 17:   # -
+      cjump (opcode:undef == 0x11) ? @top.retro_main_ifthen85, @top.retro_main_ifelse88
+      jump @top.retro_main_b159 ''
+      jump @top.retro_main_b159 ''
+138:        t = stack.pop()
+        t:undef = stack:undef.pop()
+139:        stack.top -= t
+        stack:undef.top = (stack:undef.top - t:undef)
+140:        stack.sync_top()
+        stack:undef.sync_top()
+142:      elif opcode == 18:   # *
+      cjump (opcode:undef == 0x12) ? @top.retro_main_ifthen89, @top.retro_main_ifelse92
+      jump @top.retro_main_b158 ''
+      jump @top.retro_main_b158 ''
+143:        t = stack.pop()
+        t:undef = stack:undef.pop()
+144:        stack.top *= t
+        stack:undef.top = (stack:undef.top * t:undef)
+145:        stack.sync_top()
+        stack:undef.sync_top()
+147:      elif opcode == 19:   # /mod
+      cjump (opcode:undef == 0x13) ? @top.retro_main_ifthen93, @top.retro_main_ifelse96
+      jump @top.retro_main_b157 ''
+      jump @top.retro_main_b157 ''
+148:        (stack.top, stack.second) = retro_divmod(stack.second, stack.top)
+        (stack:undef.top, stack:undef.second) = retro_divmod:function<retro_divmod>(stack:undef.second, stack:undef.top)
+149:        stack.sync()
+        stack:undef.sync()
+151:      elif opcode == 20:   # and
+      cjump (opcode:undef == 0x14) ? @top.retro_main_ifthen97, @top.retro_main_ifelse100
+      jump @top.retro_main_b156 ''
+      jump @top.retro_main_b156 ''
+152:        t = stack.pop()
+        t:undef = stack:undef.pop()
+153:        stack.top &= t
+        stack:undef.top = (stack:undef.top & t:undef)
+154:        stack.sync_top()
+        stack:undef.sync_top()
+156:      elif opcode == 21:   # or
+      cjump (opcode:undef == 0x15) ? @top.retro_main_ifthen101, @top.retro_main_ifelse104
+      jump @top.retro_main_b155 ''
+      jump @top.retro_main_b155 ''
+157:        t = stack.pop()
+        t:undef = stack:undef.pop()
+158:        stack.top |= t
+        stack:undef.top = (stack:undef.top | t:undef)
+159:        stack.sync_top()
+        stack:undef.sync_top()
+161:      elif opcode == 22:   # xor
+      cjump (opcode:undef == 0x16) ? @top.retro_main_ifthen105, @top.retro_main_ifelse108
+      jump @top.retro_main_b154 ''
+      jump @top.retro_main_b154 ''
+162:        t = stack.pop()
+        t:undef = stack:undef.pop()
+163:        stack.top ^= t
+        stack:undef.top = (stack:undef.top ^ t:undef)
+164:        stack.sync_top()
+        stack:undef.sync_top()
+166:      elif opcode == 23:   # <<
+      cjump (opcode:undef == 0x17) ? @top.retro_main_ifthen109, @top.retro_main_ifelse112
+      jump @top.retro_main_b153 ''
+      jump @top.retro_main_b153 ''
+167:        t = stack.pop()
+        t:undef = stack:undef.pop()
+168:        stack.top <<= t
+        stack:undef.top = (stack:undef.top << t:undef)
+169:        stack.sync_top()
+        stack:undef.sync_top()
+171:      elif opcode == 24:   # >>
+      cjump (opcode:undef == 0x18) ? @top.retro_main_ifthen113, @top.retro_main_ifelse116
+      jump @top.retro_main_b152 ''
+      jump @top.retro_main_b152 ''
+172:        t = stack.pop()
+        t:undef = stack:undef.pop()
+173:        stack.top >>= t
+        stack:undef.top = (stack:undef.top >> t:undef)
+174:        stack.sync_top()
+        stack:undef.sync_top()
+176:      elif opcode == 25:   # 0;
+      cjump (opcode:undef == 0x19) ? @top.retro_main_ifthen117, @top.retro_main_ifelse120
+      jump @top.retro_main_b151 ''
+      jump @top.retro_main_b151 ''
+180:        done_flag = zero_pop_return.exec(ip)
+        done_flag:undef = zero_pop_return:undef.exec(ip:undef)
+181:        ip = zero_pop_return.ip
+        ip:undef = zero_pop_return:undef.ip
+183:      elif opcode == 26:   # inc
+      cjump (opcode:undef == 0x1a) ? @top.retro_main_ifthen121, @top.retro_main_ifelse124
+      jump @top.retro_main_b150 ''
+      jump @top.retro_main_b150 ''
+184:        stack.top += 1
+        stack:undef.top = (stack:undef.top + 0x1)
+185:        stack.sync_top()
+        stack:undef.sync_top()
+187:      elif opcode == 27:   # dec
+      cjump (opcode:undef == 0x1b) ? @top.retro_main_ifthen125, @top.retro_main_ifelse128
+      jump @top.retro_main_b149 ''
+      jump @top.retro_main_b149 ''
+188:        stack.top -= 1
+        stack:undef.top = (stack:undef.top - 0x1)
+189:        stack.sync_top()
+        stack:undef.sync_top()
+191:      elif opcode == 28:   # in
+      cjump (opcode:undef == 0x1c) ? @top.retro_main_ifthen129, @top.retro_main_ifelse132
+      jump @top.retro_main_b148 ''
+      jump @top.retro_main_b148 ''
+192:        t = stack.top
+        t:undef = stack:undef.top
+193:        stack.top = ports[t]
+        stack:undef.top = ports:undef[t:undef]
+194:        ports[t] = 0
+        ports:undef[t:undef] = 0x0
+195:        stack.sync_top()
+        stack:undef.sync_top()
+197:      elif opcode == 29:   # out
+      cjump (opcode:undef == 0x1d) ? @top.retro_main_ifthen133, @top.retro_main_ifelse136
+      jump @top.retro_main_b147 ''
+      jump @top.retro_main_b147 ''
+198:        pi = stack.pop()
+        pi:undef = stack:undef.pop()
+199:        ports[ pi ] = stack.pop()
+        ports:undef[pi:undef] = stack:undef.pop()
+201:      elif opcode == 30:   # wait
+      cjump (opcode:undef == 0x1e) ? @top.retro_main_ifthen137, @top.retro_main_ifelse145
+      jump @top.retro_main_b146 ''
+203:        if ports[0] == 0:
+        cjump (ports:undef[0x0] == 0x0) ? @top.retro_main_ifthen140, @top.retro_main_ifelse143
+        jump @top.retro_main_b144 ''
+        jump @top.retro_main_b144 ''
+204:          ip = handle_devices( ip, stack, address, ports, memory, io_ports)
+          ip:undef = handle_devices:function<handle_devices>(ip:undef, stack:undef, address:undef, ports:undef, memory:list<int32>, io_ports:list<int32>)
+207:        break
+        jump @top.retro_main_whileexit191 'B'
+210:      address.push(ip)
+      address:undef.push(ip:undef)
+211:      ip = memory[ip] - 1
+      ip:undef = (memory:list<int32>[ip:undef] - 0x1)
+213:    if wr_flag:
+    cjump (wr_flag:undef != 0x0) ? @top.retro_main_ifthen179, @top.retro_main_ifelse182
+    jump @top.retro_main_b183 ''
+    jump @top.retro_main_b183 ''
+214:      memory[wr_mem_addr] = wr_mem_data
+      memory:list<int32>[wr_mem_addr:undef] = wr_mem_data:undef
+215:      wr_flag = False
+      wr_flag:undef = False
+217:    if done_flag:
+    cjump (done_flag:undef != 0x0) ? @top.retro_main_ifthen184, @top.retro_main_ifelse187
+    jump @top.retro_main_b188 ''
+    jump @top.retro_main_b188 ''
+218:        ip += 1
+        ip:undef = (ip:undef + 0x1)
+------------------------------
+sim_device.handle_devices
+------------------------------
+19:def handle_devices( ip, stack:retro_stack, address:retro_stack, ports:list, memory:list, io_ports:list ):
+ip:int32 = @in_ip:int32
+stack:retro_stack = @in_stack:retro_stack
+address:retro_stack = @in_address:retro_stack
+ports:list<int32> = @in_ports:list<int32>
+memory:list<int32> = @in_memory:list<int32>
+io_ports:list<int32> = @in_io_ports:list<int32>
+20:  ports[0] = 1
+  ports:list<int32>[0x0] = 0x1
+21:  if ports[1] == 1:
+  cjump (ports:list<int32>[0x1] == 0x1) ? sim_device.handle_devices_ifthen2, sim_device.handle_devices_ifelse10
+  jump sim_device.handle_devices_b11 ''
+  jump sim_device.handle_devices_b11 ''
+22:    ports[1] = rx_char( io_ports )
+    ports:list<int32>[0x1] = rx_char:function<rx_char>(io_ports:list<int32>)
+23:    if ports[1] == 13:
+    cjump (ports:list<int32>[0x1] == 0xd) ? sim_device.handle_devices_ifthen5, sim_device.handle_devices_ifelse8
+    jump sim_device.handle_devices_b9 ''
+    jump sim_device.handle_devices_b9 ''
+24:      ports[1] = 10
+      ports:list<int32>[0x1] = 0xa
+25:  if ports[2] == 1:
+  cjump (ports:list<int32>[0x2] == 0x1) ? sim_device.handle_devices_ifthen12, sim_device.handle_devices_ifelse25
+  jump sim_device.handle_devices_b26 ''
+  jump sim_device.handle_devices_b26 ''
+26:    if stack.top > 0 and stack.top < 128:
+    cjump ((stack:retro_stack.top:undef > 0x0) and (stack:retro_stack.top:undef < 0x80)) ? sim_device.handle_devices_ifthen15, sim_device.handle_devices_ifelse23
+    jump sim_device.handle_devices_b24 ''
+    jump sim_device.handle_devices_b24 ''
+27:      if stack.top == 8:
+      cjump (stack:retro_stack.top:undef == 0x8) ? sim_device.handle_devices_ifthen18, sim_device.handle_devices_ifelse21
+      jump sim_device.handle_devices_b22 ''
+      jump sim_device.handle_devices_b22 ''
+28:        tx_char(io_ports, stack.pop())
+        tx_char:function<tx_char>(io_ports:list<int32>, stack:retro_stack.pop:function<retro_stack.pop>())
+29:        tx_char(io_ports, 32)
+        tx_char:function<tx_char>(io_ports:list<int32>, 0x20)
+30:        tx_char(io_ports, 8)
+        tx_char:function<tx_char>(io_ports:list<int32>, 0x8)
+32:        tx_char(io_ports, stack.pop())
+        tx_char:function<tx_char>(io_ports:list<int32>, stack:retro_stack.pop:function<retro_stack.pop>())
+36:      stack.pop()
+      stack:retro_stack.pop:function<retro_stack.pop>()
+37:    flush(io_ports)
+    flush:function<flush>(io_ports:list<int32>)
+38:    ports[2] = 0
+    ports:list<int32>[0x2] = 0x0
+39:  if ports[4] ==  1:    # file save
+  cjump (ports:list<int32>[0x4] == 0x1) ? sim_device.handle_devices_ifthen27, sim_device.handle_devices_ifelse30
+  jump sim_device.handle_devices_b31 ''
+  jump sim_device.handle_devices_b31 ''
+47:    ports[4] = 0
+    ports:list<int32>[0x4] = 0x0
+48:  if ports[4] ==  2:    # file include
+  cjump (ports:list<int32>[0x4] == 0x2) ? sim_device.handle_devices_ifthen32, sim_device.handle_devices_ifelse35
+  jump sim_device.handle_devices_b36 ''
+  jump sim_device.handle_devices_b36 ''
+57:    ports[4] = 0
+    ports:list<int32>[0x4] = 0x0
+58:  if ports[4] == -1:    # file open
+  cjump (ports:list<int32>[0x4] == -0x1) ? sim_device.handle_devices_ifthen37, sim_device.handle_devices_ifelse40
+  jump sim_device.handle_devices_b71 ''
+  jump sim_device.handle_devices_b71 ''
+88:    ports[4] = 0;
+    ports:list<int32>[0x4] = 0x0
+89:  elif ports[4] == -2:  # file read
+  cjump (ports:list<int32>[0x4] == -0x2) ? sim_device.handle_devices_ifthen41, sim_device.handle_devices_ifelse44
+  jump sim_device.handle_devices_b70 ''
+  jump sim_device.handle_devices_b70 ''
+92:    ports[4] = 0;
+    ports:list<int32>[0x4] = 0x0
+93:  elif ports[4] == -3:  # file write
+  cjump (ports:list<int32>[0x4] == -0x3) ? sim_device.handle_devices_ifthen45, sim_device.handle_devices_ifelse48
+  jump sim_device.handle_devices_b69 ''
+  jump sim_device.handle_devices_b69 ''
+96:    ports[4] = 1
+    ports:list<int32>[0x4] = 0x1
+97:  elif ports[4] == -4:  # file close
+  cjump (ports:list<int32>[0x4] == -0x4) ? sim_device.handle_devices_ifthen49, sim_device.handle_devices_ifelse52
+  jump sim_device.handle_devices_b68 ''
+  jump sim_device.handle_devices_b68 ''
+101:    ports[4] = 0
+    ports:list<int32>[0x4] = 0x0
+102:  elif ports[4] == -5:  # file position
+  cjump (ports:list<int32>[0x4] == -0x5) ? sim_device.handle_devices_ifthen53, sim_device.handle_devices_ifelse56
+  jump sim_device.handle_devices_b67 ''
+  jump sim_device.handle_devices_b67 ''
+105:    ports[4] = 0
+    ports:list<int32>[0x4] = 0x0
+106:  elif ports[4] == -6:  # file seek
+  cjump (ports:list<int32>[0x4] == -0x6) ? sim_device.handle_devices_ifthen57, sim_device.handle_devices_ifelse60
+  jump sim_device.handle_devices_b66 ''
+  jump sim_device.handle_devices_b66 ''
+110:    ports[4] = 0
+    ports:list<int32>[0x4] = 0x0
+111:  elif ports[4] == -7:  # file size
+  cjump (ports:list<int32>[0x4] == -0x7) ? sim_device.handle_devices_ifthen61, sim_device.handle_devices_ifelse64
+  jump sim_device.handle_devices_b65 ''
+  jump sim_device.handle_devices_b65 ''
+117:    ports[4] = 0
+    ports:list<int32>[0x4] = 0x0
+118:  if ports[4] == -8:    # file delete
+  cjump (ports:list<int32>[0x4] == -0x8) ? sim_device.handle_devices_ifthen72, sim_device.handle_devices_ifelse75
+  jump sim_device.handle_devices_b76 ''
+  jump sim_device.handle_devices_b76 ''
+129:    ports[4] = 0
+    ports:list<int32>[0x4] = 0x0
+130:  if ports[5] == -1:  # memory size - zero based index
+  cjump (ports:list<int32>[0x5] == -0x1) ? sim_device.handle_devices_ifthen77, sim_device.handle_devices_ifelse80
+  jump sim_device.handle_devices_b151 ''
+  jump sim_device.handle_devices_b151 ''
+131:    ports[5] = 100000 - 1
+    ports:list<int32>[0x5] = 0x1869f
+132:  elif ports[5] == -2:  # canvas exists?
+  cjump (ports:list<int32>[0x5] == -0x2) ? sim_device.handle_devices_ifthen81, sim_device.handle_devices_ifelse84
+  jump sim_device.handle_devices_b150 ''
+  jump sim_device.handle_devices_b150 ''
+133:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+134:  elif ports[5] == -3:  # canvas width
+  cjump (ports:list<int32>[0x5] == -0x3) ? sim_device.handle_devices_ifthen85, sim_device.handle_devices_ifelse88
+  jump sim_device.handle_devices_b149 ''
+  jump sim_device.handle_devices_b149 ''
+135:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+136:  elif ports[5] == -4:  # canvas height
+  cjump (ports:list<int32>[0x5] == -0x4) ? sim_device.handle_devices_ifthen89, sim_device.handle_devices_ifelse92
+  jump sim_device.handle_devices_b148 ''
+  jump sim_device.handle_devices_b148 ''
+137:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+138:  elif ports[5] == -5:  # stack depth
+  cjump (ports:list<int32>[0x5] == -0x5) ? sim_device.handle_devices_ifthen93, sim_device.handle_devices_ifelse96
+  jump sim_device.handle_devices_b147 ''
+  jump sim_device.handle_devices_b147 ''
+139:    ports[5] = stack.length()
+    ports:list<int32>[0x5] = stack:retro_stack.length:function<retro_stack.length>()
+140:  elif ports[5] == -6:  # address stack depth
+  cjump (ports:list<int32>[0x5] == -0x6) ? sim_device.handle_devices_ifthen97, sim_device.handle_devices_ifelse100
+  jump sim_device.handle_devices_b146 ''
+  jump sim_device.handle_devices_b146 ''
+141:    ports[5] = address.length()
+    ports:list<int32>[0x5] = address:retro_stack.length:function<retro_stack.length>()
+142:  elif ports[5] == -7:  # mouse exists?
+  cjump (ports:list<int32>[0x5] == -0x7) ? sim_device.handle_devices_ifthen101, sim_device.handle_devices_ifelse104
+  jump sim_device.handle_devices_b145 ''
+  jump sim_device.handle_devices_b145 ''
+143:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+144:  elif ports[5] == -8:  # time
+  cjump (ports:list<int32>[0x5] == -0x8) ? sim_device.handle_devices_ifthen105, sim_device.handle_devices_ifelse108
+  jump sim_device.handle_devices_b144 ''
+  jump sim_device.handle_devices_b144 ''
+146:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+147:  elif ports[5] == -9:  # exit vm
+  cjump (ports:list<int32>[0x5] == -0x9) ? sim_device.handle_devices_ifthen109, sim_device.handle_devices_ifelse112
+  jump sim_device.handle_devices_b143 ''
+  jump sim_device.handle_devices_b143 ''
+148:    ip = EXIT
+    ip:int32 = EXIT:undef
+149:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+150:  elif ports[5] == -10: # environment variable
+  cjump (ports:list<int32>[0x5] == -0xa) ? sim_device.handle_devices_ifthen113, sim_device.handle_devices_ifelse116
+  jump sim_device.handle_devices_b142 ''
+  jump sim_device.handle_devices_b142 ''
+166:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+167:  elif ports[5] == -11: # console width
+  cjump (ports:list<int32>[0x5] == -0xb) ? sim_device.handle_devices_ifthen117, sim_device.handle_devices_ifelse120
+  jump sim_device.handle_devices_b141 ''
+  jump sim_device.handle_devices_b141 ''
+168:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+169:  elif ports[5] == -12: # console height
+  cjump (ports:list<int32>[0x5] == -0xc) ? sim_device.handle_devices_ifthen121, sim_device.handle_devices_ifelse124
+  jump sim_device.handle_devices_b140 ''
+  jump sim_device.handle_devices_b140 ''
+170:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+171:  elif ports[5] == -13: # bits per cell
+  cjump (ports:list<int32>[0x5] == -0xd) ? sim_device.handle_devices_ifthen125, sim_device.handle_devices_ifelse128
+  jump sim_device.handle_devices_b139 ''
+  jump sim_device.handle_devices_b139 ''
+172:    ports[5] = 32
+    ports:list<int32>[0x5] = 0x20
+173:  elif ports[5] == -14: # endian
+  cjump (ports:list<int32>[0x5] == -0xe) ? sim_device.handle_devices_ifthen129, sim_device.handle_devices_ifelse132
+  jump sim_device.handle_devices_b138 ''
+  jump sim_device.handle_devices_b138 ''
+174:    ports[5] = 0
+    ports:list<int32>[0x5] = 0x0
+175:  elif ports[5] == -15: # console extensions
+  cjump (ports:list<int32>[0x5] == -0xf) ? sim_device.handle_devices_ifthen133, sim_device.handle_devices_ifelse136
+  jump sim_device.handle_devices_b137 ''
+  jump sim_device.handle_devices_b137 ''
+176:    ports[5] = -1
+    ports:list<int32>[0x5] = -0x1
+193:  if ports[8] == 1:
+  cjump (ports:list<int32>[0x8] == 0x1) ? sim_device.handle_devices_ifthen152, sim_device.handle_devices_ifelse155
+  jump sim_device.handle_devices_b156 ''
+  jump sim_device.handle_devices_b156 ''
+194:    ports[8] = 0
+    ports:list<int32>[0x8] = 0x0
+196:  return ip
+  @function_return:undef = ip:int32
+  jump sim_device.handle_devices_exit157 'E'
+  return @function_return:undef
+------------------------------
+sim_device.flush
+------------------------------
+14:def flush( io_ports ):
+io_ports:int32 = @in_io_ports:int32
+------------------------------
+utils_for_retro.retro_divmod
+------------------------------
+11:def retro_divmod( a, b ):
+a:int32 = @in_a:int32
+b:int32 = @in_b:int32
+12:  abs_x = abs(a)
+  abs_x:undef = abs:function<abs>(a:int32)
+13:  abs_y = abs(b)
+  abs_y:undef = abs:function<abs>(b:int32)
+15:  q = abs_x // abs_y
+  q:undef = (abs_x:undef // abs_y:undef)
+16:  r = abs_x % abs_y
+  r:undef = (abs_x:undef % abs_y:undef)
+18:  if a < 0 and b < 0:
+  cjump ((a:int32 < 0x0) and (b:int32 < 0x0)) ? utils_for_retro.retro_divmod_ifthen2, utils_for_retro.retro_divmod_ifelse5
+  jump utils_for_retro.retro_divmod_b16 ''
+  jump utils_for_retro.retro_divmod_b16 ''
+19:    r *= -1
+    r:undef = (r:undef * -0x1)
+20:  elif a > 0 and b < 0:
+  cjump ((a:int32 > 0x0) and (b:int32 < 0x0)) ? utils_for_retro.retro_divmod_ifthen6, utils_for_retro.retro_divmod_ifelse9
+  jump utils_for_retro.retro_divmod_b15 ''
+  jump utils_for_retro.retro_divmod_b15 ''
+21:    q *= -1
+    q:undef = (q:undef * -0x1)
+22:  elif a < 0 and b > 0:
+  cjump ((a:int32 < 0x0) and (b:int32 > 0x0)) ? utils_for_retro.retro_divmod_ifthen10, utils_for_retro.retro_divmod_ifelse13
+  jump utils_for_retro.retro_divmod_b14 ''
+  jump utils_for_retro.retro_divmod_b14 ''
+23:    r *= -1
+    r:undef = (r:undef * -0x1)
+24:    q *= -1
+    q:undef = (q:undef * -0x1)
+26:  return q, r
+  @function_return:undef = (q:undef, r:undef)
+  jump utils_for_retro.retro_divmod_exit17 'E'
+  return @function_return:undef
+------------------------------
+sim_device.tx_char
+------------------------------
+10:def tx_char( io_ports, char_c ):
+io_ports:int32 = @in_io_ports:int32
+char_c:int32 = @in_char_c:int32
+12:    print(char_c)
+    !print:function<print>(char_c:int32)
+------------------------------
+utils_for_retro.abs
+------------------------------
+7:def abs(a):
+a:int32 = @in_a:int32
+8:    return -a if a < 0 else a
+    @function_return:undef = ((a:int32 < 0x0) ? -a:int32 : a:int32)
+    jump utils_for_retro.abs_exit2 'E'
+    return @function_return:undef
+------------------------------
+sim_device.rx_char
+------------------------------
+6:def rx_char( io_ports ):
+io_ports:int32 = @in_io_ports:int32
+7:    print('rx_chflush')
+    !print:function<print>('rx_chflush')
+8:    return 0
+    @function_return:undef = 0x0
+    jump sim_device.rx_char_exit2 'E'
+    return @function_return:undef
+------------------------------
+stack.retro_stack
+------------------------------
+------------------------------
+zero_pop_return.ZERO_POP_RETURN
+------------------------------
+------------------------------
+write_point.WRITE_POINT
+------------------------------
+------------------------------
+point.POINT
+------------------------------
+------------------------------
+jump_eq.JUMP_EQ
+------------------------------
+------------------------------
+jump_ne.JUMP_NE
+------------------------------
+------------------------------
+jump_le.JUMP_LE
+------------------------------
+------------------------------
+jump_ge.JUMP_GE
+------------------------------
+------------------------------
+jump.JUMP
+------------------------------
+------------------------------
+loop.LOOP
+------------------------------
+------------------------------
+lit.LIT
+------------------------------
+------------------------------
+zero_pop_return
+------------------------------
+------------------------------
+write_point
+------------------------------
+------------------------------
+point
+------------------------------
+------------------------------
+jump_eq
+------------------------------
+------------------------------
+jump_ne
+------------------------------
+------------------------------
+jump_le
+------------------------------
+------------------------------
+jump_ge
+------------------------------
+------------------------------
+jump
+------------------------------
+------------------------------
+loop
+------------------------------
+------------------------------
+lit
+------------------------------
+------------------------------
+stack
+------------------------------
+------------------------------
+utils_for_retro
+------------------------------
+1:EXIT = 0x0FFFFFFF
+EXIT:undef = 0xfffffff
+2:INPUT_INC = 4
+INPUT_INC:undef = 0x4
+3:DEC = 2
+DEC:undef = 0x2
+4:MEMORY_SIZE = 64 #16384
+MEMORY_SIZE:undef = 0x40
+------------------------------
+sim_device
+------------------------------
+------------------------------
+@top
+------------------------------
+2371:if __name__ == "__main__":
+cjump (__name__:str == '__main__') ? @top_ifthen2, @top_ifelse5
+jump @top_b6 ''
+jump @top_b6 ''
+2372:    test()
+    test:function<test>()
+--------------------------
+select_scope:loop
+--------------------------
+select_scope:jump
+--------------------------
+select_scope:jump_ge
+--------------------------
+select_scope:jump_le
+--------------------------
+select_scope:jump_ne
+--------------------------
+select_scope:jump_eq
+--------------------------
+select_scope:point
+--------------------------
+select_scope:write_point
+--------------------------
+select_scope:zero_pop_return
+--------------------------
+select_scope:lit.LIT
+--------------------------
+select_scope:loop.LOOP
+--------------------------
+select_scope:jump.JUMP
+--------------------------
+select_scope:jump_ge.JUMP_GE
+--------------------------
+select_scope:jump_le.JUMP_LE
+--------------------------
+select_scope:jump_ne.JUMP_NE
+--------------------------
+select_scope:jump_eq.JUMP_EQ
+--------------------------
+select_scope:point.POINT
+--------------------------
+select_scope:write_point.WRITE_POINT
+--------------------------
+select_scope:zero_pop_return.ZERO_POP_RETURN
+--------------------------
+select_scope:stack.retro_stack
+--------------------------
+select_scope:sim_device.rx_char
+--------------------------
+select_scope:utils_for_retro.abs
+--------------------------
+select_scope:sim_device.tx_char
+--------------------------
+select_scope:utils_for_retro.retro_divmod
+--------------------------
+select_scope:sim_device.flush
+--------------------------
+select_scope:sim_device.handle_devices
+--------------------------
+select_scope:@top.retro_main
+--------------------------
+select_scope:@top.test
+--------------------------
+select_scope:lit.LIT.__init__
+--------------------------
+select_scope:loop.LOOP.__init__
+--------------------------
+select_scope:jump.JUMP.__init__
+--------------------------
+select_scope:jump_ge.JUMP_GE.__init__
+--------------------------
+select_scope:jump_le.JUMP_LE.__init__
+--------------------------
+select_scope:jump_ne.JUMP_NE.__init__
+--------------------------
+select_scope:jump_eq.JUMP_EQ.__init__
+--------------------------
+select_scope:point.POINT.__init__
+--------------------------
+select_scope:write_point.WRITE_POINT.__init__
+--------------------------
+select_scope:zero_pop_return.ZERO_POP_RETURN.__init__
+--------------------------
+select_scope:stack.retro_stack.__init__
+--------------------------
+select_scope:jump.JUMP.exec
+--------------------------
+select_scope:lit.LIT.exec
+--------------------------
+select_scope:loop.LOOP.exec
+--------------------------
+select_scope:jump_ge.JUMP_GE.exec
+--------------------------
+select_scope:jump_le.JUMP_LE.exec
+--------------------------
+select_scope:jump_ne.JUMP_NE.exec
+--------------------------
+select_scope:jump_eq.JUMP_EQ.exec
+--------------------------
+select_scope:point.POINT.exec
+--------------------------
+select_scope:zero_pop_return.ZERO_POP_RETURN.exec
+--------------------------
+select_scope:write_point.WRITE_POINT.exec
+--------------------------
+select_scope:stack.retro_stack.pop
+--------------------------
+select_scope:stack.retro_stack.push
+--------------------------
+select_scope:stack.retro_stack.swap
+--------------------------
+select_scope:stack.retro_stack.length
+--------------------------
+select_scope:stack.retro_stack.sync_top
+--------------------------
+select_scope:stack.retro_stack.sync_second
+--------------------------
+select_scope:stack.retro_stack.sync
+--------------------------
+select_scope:stack.retro_stack.check
+--------------------------
+earlyquadruple:loop
+--------------------------
+earlytypeprop:loop
+--------------------------
+earlytypeprop:jump
+--------------------------
+earlytypeprop:jump_ge
+--------------------------
+earlytypeprop:jump_le
+--------------------------
+earlytypeprop:jump_ne
+--------------------------
+earlytypeprop:jump_eq
+--------------------------
+earlytypeprop:point
+--------------------------
+earlytypeprop:write_point
+--------------------------
+earlytypeprop:zero_pop_return
+--------------------------
+earlytypeprop:lit.LIT
+--------------------------
+earlytypeprop:loop.LOOP
+--------------------------
+earlytypeprop:jump.JUMP
+--------------------------
+earlytypeprop:jump_ge.JUMP_GE
+--------------------------
+earlytypeprop:jump_le.JUMP_LE
+--------------------------
+earlytypeprop:jump_ne.JUMP_NE
+--------------------------
+earlytypeprop:jump_eq.JUMP_EQ
+--------------------------
+earlytypeprop:point.POINT
+--------------------------
+earlytypeprop:write_point.WRITE_POINT
+--------------------------
+earlytypeprop:zero_pop_return.ZERO_POP_RETURN
+--------------------------
+earlytypeprop:stack.retro_stack
+--------------------------
+latequadruple:loop
+--------------------------
+earlyrestrictioncheck:loop
+--------------------------
+staticconstopt:loop
+--------------------------
+staticconstopt:jump
+--------------------------
+staticconstopt:jump_ge
+--------------------------
+staticconstopt:jump_le
+--------------------------
+staticconstopt:jump_ne
+--------------------------
+staticconstopt:jump_eq
+--------------------------
+staticconstopt:point
+--------------------------
+staticconstopt:write_point
+--------------------------
+staticconstopt:zero_pop_return
+--------------------------
+staticconstopt:lit.LIT
+--------------------------
+staticconstopt:loop.LOOP
+--------------------------
+staticconstopt:jump.JUMP
+--------------------------
+staticconstopt:jump_ge.JUMP_GE
+--------------------------
+staticconstopt:jump_le.JUMP_LE
+--------------------------
+staticconstopt:jump_ne.JUMP_NE
+--------------------------
+staticconstopt:jump_eq.JUMP_EQ
+--------------------------
+staticconstopt:point.POINT
+--------------------------
+staticconstopt:write_point.WRITE_POINT
+--------------------------
+staticconstopt:zero_pop_return.ZERO_POP_RETURN
+--------------------------
+staticconstopt:stack.retro_stack
+stack.retro_stack_b1 order 1
+zero_pop_return.ZERO_POP_RETURN_b1 order 1
+write_point.WRITE_POINT_b1 order 1
+point.POINT_b1 order 1
+jump_eq.JUMP_EQ_b1 order 1
+jump_ne.JUMP_NE_b1 order 1
+jump_le.JUMP_LE_b1 order 1
+jump_ge.JUMP_GE_b1 order 1
+jump.JUMP_b1 order 1
+loop.LOOP_b1 order 1
+lit.LIT_b1 order 1
+zero_pop_return_b1 order 1
+write_point_b1 order 1
+point_b1 order 1
+jump_eq_b1 order 1
+jump_ne_b1 order 1
+jump_le_b1 order 1
+jump_ge_b1 order 1
+jump_b1 order 1
+loop_b1 order 1
+lit_b1 order 1
+polyphony.typing_b1 order 1
+stack_b1 order 1
+utils_for_retro_b1 order 1
+sim_device_b1 order 1
+polyphony_b1 order 1
+@top_b1 order 1
+@top_ifthen2 order 2
+@top_b6 order 3
+@top_ifelse5 order 2
+__builtin___b1 order 1
+--------------------------
+typeprop:loop
+--------------------------
+dumpscope:loop
+
+================================
+Scope: loop (namespace)
+__name__, __file__, print, range, len, assert, int, bool, polyphony.unroll, polyphony.pipelined, LOOP
+================================
+Parameters
+
+Return
+Type('undef', {})
+Synthesis
+defaultdict(<class 'str'>, {'scheduling': '', 'cycle': '', 'ii': 0})
+================================
+Block: (1) loop_b1
+ # preds: {}
+ # succs: {}
+ # synthesis params defaultdict(<class 'str'>, {'scheduling': '', 'cycle': '', 'ii': 0})
+ # code
+
+
+================================
+================================
+
+--------------------------
+typecheck:loop
+--------------------------
+restrictioncheck:loop
+--------------------------
+usedef:loop
+--------------------------
+select_scope:loop
+--------------------------
+select_scope:jump
+--------------------------
+select_scope:jump_ge
+--------------------------
+select_scope:jump_le
+--------------------------
+select_scope:jump_ne
+--------------------------
+select_scope:jump_eq
+--------------------------
+select_scope:point
+--------------------------
+select_scope:write_point
+--------------------------
+select_scope:zero_pop_return
+--------------------------
+select_scope:lit.LIT
+--------------------------
+select_scope:loop.LOOP
+--------------------------
+select_scope:jump.JUMP
+--------------------------
+select_scope:jump_ge.JUMP_GE
+--------------------------
+select_scope:jump_le.JUMP_LE
+--------------------------
+select_scope:jump_ne.JUMP_NE
+--------------------------
+select_scope:jump_eq.JUMP_EQ
+--------------------------
+select_scope:point.POINT
+--------------------------
+select_scope:write_point.WRITE_POINT
+--------------------------
+select_scope:zero_pop_return.ZERO_POP_RETURN
+--------------------------
+select_scope:stack.retro_stack

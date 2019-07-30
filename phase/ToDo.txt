@@ -1,0 +1,2 @@
+loop 通ってない。
+jump_ge, jump_le 追加するも通っていない。
